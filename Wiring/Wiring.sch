@@ -1,0 +1,564 @@
+EESchema Schematic File Version 4
+LIBS:Wiring-cache
+EELAYER 26 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 1 1
+Title "Arduino Motor Layout"
+Date "2019-05-28"
+Rev "3"
+Comp "Bean Blasters"
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L MCU_Module:Arduino_UNO_R3 A1
+U 1 1 5CD08DF0
+P 4050 4150
+F 0 "A1" H 4050 5328 50  0000 C CNN
+F 1 "Arduino_UNO_R3" H 4050 5237 50  0000 C CNN
+F 2 "Module:Arduino_UNO_R3" H 4200 3100 50  0001 L CNN
+F 3 "https://www.arduino.cc/en/Main/arduinoBoardUno" H 3850 5200 50  0001 C CNN
+	1    4050 4150
+	-1   0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR011
+U 1 1 5CD0935A
+P 4150 5400
+F 0 "#PWR011" H 4150 5150 50  0001 C CNN
+F 1 "GND" H 4155 5227 50  0000 C CNN
+F 2 "" H 4150 5400 50  0001 C CNN
+F 3 "" H 4150 5400 50  0001 C CNN
+	1    4150 5400
+	-1   0    0    -1  
+$EndComp
+$Comp
+L power:+5V #PWR05
+U 1 1 5CD093F2
+P 3450 3000
+F 0 "#PWR05" H 3450 2850 50  0001 C CNN
+F 1 "+5V" H 3465 3173 50  0000 C CNN
+F 2 "" H 3450 3000 50  0001 C CNN
+F 3 "" H 3450 3000 50  0001 C CNN
+	1    3450 3000
+	1    0    0    1   
+$EndComp
+Wire Wire Line
+	3850 3150 3850 3000
+Wire Wire Line
+	3850 3000 3450 3000
+Wire Wire Line
+	4150 5250 4150 5350
+Wire Wire Line
+	3950 5250 3950 5350
+Wire Wire Line
+	3950 5350 4050 5350
+Connection ~ 4150 5350
+Wire Wire Line
+	4150 5350 4150 5400
+Wire Wire Line
+	4050 5250 4050 5350
+Connection ~ 4050 5350
+Wire Wire Line
+	4050 5350 4150 5350
+$Comp
+L Motor:Motor_Servo M1
+U 1 1 5CD09A81
+P 5450 2150
+F 0 "M1" H 5450 2500 50  0000 L CNN
+F 1 "Motor_Servo" H 5300 2400 50  0000 L CNN
+F 2 "" H 5450 1960 50  0001 C CNN
+F 3 "http://forums.parallax.com/uploads/attachments/46831/74481.png" H 5450 1960 50  0001 C CNN
+	1    5450 2150
+	1    0    0    -1  
+$EndComp
+$Comp
+L Motor:Motor_Servo M2
+U 1 1 5CD09B54
+P 5450 2650
+F 0 "M2" H 5445 2343 50  0000 C CNN
+F 1 "Motor_Servo" H 5445 2434 50  0000 C CNN
+F 2 "" H 5450 2460 50  0001 C CNN
+F 3 "http://forums.parallax.com/uploads/attachments/46831/74481.png" H 5450 2460 50  0001 C CNN
+	1    5450 2650
+	1    0    0    1   
+$EndComp
+Wire Wire Line
+	5150 2550 5100 2550
+Wire Wire Line
+	5100 2550 5100 2350
+Wire Wire Line
+	5100 2250 5150 2250
+Wire Wire Line
+	5150 2150 4850 2150
+Wire Wire Line
+	4850 2150 4850 2650
+Wire Wire Line
+	4850 2650 5150 2650
+$Comp
+L power:+5V #PWR01
+U 1 1 5CD0A1D0
+P 4850 2000
+F 0 "#PWR01" H 4850 1850 50  0001 C CNN
+F 1 "+5V" H 4865 2173 50  0000 C CNN
+F 2 "" H 4850 2000 50  0001 C CNN
+F 3 "" H 4850 2000 50  0001 C CNN
+	1    4850 2000
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR02
+U 1 1 5CD0A205
+P 5000 2400
+F 0 "#PWR02" H 5000 2150 50  0001 C CNN
+F 1 "GND" H 5005 2227 50  0000 C CNN
+F 2 "" H 5000 2400 50  0001 C CNN
+F 3 "" H 5000 2400 50  0001 C CNN
+	1    5000 2400
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5100 2350 5000 2350
+Wire Wire Line
+	5000 2350 5000 2400
+Connection ~ 5100 2350
+Wire Wire Line
+	5100 2350 5100 2250
+Wire Wire Line
+	4850 2000 4850 2150
+Connection ~ 4850 2150
+$Comp
+L power:GND #PWR06
+U 1 1 5CD0ACC3
+P 7550 3550
+F 0 "#PWR06" H 7550 3300 50  0001 C CNN
+F 1 "GND" H 7555 3377 50  0000 C CNN
+F 2 "" H 7550 3550 50  0001 C CNN
+F 3 "" H 7550 3550 50  0001 C CNN
+	1    7550 3550
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+5V #PWR04
+U 1 1 5CD0AD3D
+P 7550 2900
+F 0 "#PWR04" H 7550 2750 50  0001 C CNN
+F 1 "+5V" H 7565 3073 50  0000 C CNN
+F 2 "" H 7550 2900 50  0001 C CNN
+F 3 "" H 7550 2900 50  0001 C CNN
+	1    7550 2900
+	1    0    0    -1  
+$EndComp
+Text Notes 6500 2150 0    50   ~ 0
+Electromagnet Switch
+$Comp
+L Motor:Motor_DC M3
+U 1 1 5CD0C5EA
+P 7550 4850
+F 0 "M3" H 7708 4846 50  0000 L CNN
+F 1 "Motor_DC" H 7708 4755 50  0000 L CNN
+F 2 "" H 7550 4760 50  0001 C CNN
+F 3 "~" H 7550 4760 50  0001 C CNN
+	1    7550 4850
+	-1   0    0    -1  
+$EndComp
+$Comp
+L Device:Electromagnetic_Actor L1
+U 1 1 5CD0C731
+P 7100 5700
+F 0 "L1" H 7230 5796 50  0000 L CNN
+F 1 "Electromagnetic_Actor" H 7230 5705 50  0000 L CNN
+F 2 "" V 7075 5800 50  0001 C CNN
+F 3 "~" V 7075 5800 50  0001 C CNN
+	1    7100 5700
+	1    0    0    -1  
+$EndComp
+Text Notes 5000 2900 0    50   ~ 0
+Bean Bag Loader
+Text Notes 7350 5100 2    50   ~ 0
+Catapult Motor
+Text Notes 2700 3800 0    50   ~ 0
+To Raspberry Pi\nSerial USB
+Wire Wire Line
+	5550 4800 5550 4900
+$Comp
+L power:GND #PWR010
+U 1 1 5CE62BBF
+P 5550 4900
+F 0 "#PWR010" H 5550 4650 50  0001 C CNN
+F 1 "GND" H 5555 4727 50  0000 C CNN
+F 2 "" H 5550 4900 50  0001 C CNN
+F 3 "" H 5550 4900 50  0001 C CNN
+	1    5550 4900
+	-1   0    0    -1  
+$EndComp
+$Comp
+L power:+5V #PWR07
+U 1 1 5CE62C29
+P 5650 4100
+F 0 "#PWR07" H 5650 3950 50  0001 C CNN
+F 1 "+5V" H 5665 4273 50  0000 C CNN
+F 2 "" H 5650 4100 50  0001 C CNN
+F 3 "" H 5650 4100 50  0001 C CNN
+	1    5650 4100
+	-1   0    0    -1  
+$EndComp
+Wire Wire Line
+	5650 4100 5700 4100
+NoConn ~ 3550 3550
+NoConn ~ 3950 3150
+NoConn ~ 4150 3150
+NoConn ~ 3550 3750
+NoConn ~ 3550 3950
+NoConn ~ 3550 4850
+NoConn ~ 3550 4950
+NoConn ~ 3550 4650
+NoConn ~ 3550 4550
+NoConn ~ 3550 4450
+$Comp
+L power:+12V #PWR08
+U 1 1 5CE79FB2
+P 6950 4150
+F 0 "#PWR08" H 6950 4000 50  0001 C CNN
+F 1 "+12V" H 6965 4323 50  0000 C CNN
+F 2 "" H 6950 4150 50  0001 C CNN
+F 3 "" H 6950 4150 50  0001 C CNN
+	1    6950 4150
+	-1   0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR09
+U 1 1 5CE7A031
+P 7450 4350
+F 0 "#PWR09" H 7450 4100 50  0001 C CNN
+F 1 "GND" H 7455 4177 50  0000 C CNN
+F 2 "" H 7450 4350 50  0001 C CNN
+F 3 "" H 7450 4350 50  0001 C CNN
+	1    7450 4350
+	-1   0    0    -1  
+$EndComp
+NoConn ~ 4550 3550
+NoConn ~ 4550 3650
+Wire Wire Line
+	7100 5800 7100 6000
+$Comp
+L Switch:SW_SPDT SW2
+U 1 1 5CE8BAE1
+P 7300 3300
+F 0 "SW2" H 7300 3585 50  0000 C CNN
+F 1 "SW_SPDT" H 7300 3494 50  0000 C CNN
+F 2 "" H 7300 3300 50  0001 C CNN
+F 3 "" H 7300 3300 50  0001 C CNN
+	1    7300 3300
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7550 3400 7500 3400
+Wire Wire Line
+	7550 3200 7500 3200
+Wire Wire Line
+	7550 3200 7550 2950
+Wire Wire Line
+	7550 3550 7550 3400
+Text Notes 7050 3850 0    50   ~ 0
+Motor Limit Switch
+$Comp
+L power:GND #PWR03
+U 1 1 5CE99007
+P 6600 2500
+F 0 "#PWR03" H 6600 2250 50  0001 C CNN
+F 1 "GND" H 6605 2327 50  0000 C CNN
+F 2 "" H 6600 2500 50  0001 C CNN
+F 3 "" H 6600 2500 50  0001 C CNN
+	1    6600 2500
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6600 2500 6600 2300
+NoConn ~ 3550 4350
+Wire Wire Line
+	4550 4050 4650 4050
+Wire Wire Line
+	4650 4050 4650 2050
+Wire Wire Line
+	4650 2050 5150 2050
+Wire Wire Line
+	5150 2750 4700 2750
+Wire Wire Line
+	4700 2750 4700 4150
+Wire Wire Line
+	4700 4150 4550 4150
+$Comp
+L Switch:SW_SPST SW1
+U 1 1 5CEE1480
+P 6250 2300
+F 0 "SW1" H 6250 2535 50  0000 C CNN
+F 1 "SW_SPST" H 6250 2444 50  0000 C CNN
+F 2 "" H 6250 2300 50  0001 C CNN
+F 3 "" H 6250 2300 50  0001 C CNN
+	1    6250 2300
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4550 4250 4800 4250
+Wire Wire Line
+	5900 2300 6050 2300
+Text Notes 6500 2250 0    50   ~ 0
+Need to use internal pullup
+Wire Wire Line
+	6450 2300 6600 2300
+Wire Wire Line
+	5900 2950 4800 2950
+Wire Wire Line
+	5900 2950 5900 2300
+Wire Wire Line
+	4800 2950 4800 4250
+Wire Wire Line
+	6650 4700 7300 4700
+Wire Wire Line
+	7300 4700 7300 4650
+Wire Wire Line
+	7300 4650 7550 4650
+Wire Wire Line
+	7550 5150 6750 5150
+Wire Wire Line
+	6750 5150 6750 4600
+Wire Wire Line
+	6750 4600 6650 4600
+Wire Wire Line
+	6650 4500 6850 4500
+Wire Wire Line
+	6750 4350 6750 4400
+Wire Wire Line
+	6750 4400 6650 4400
+Wire Wire Line
+	6750 4350 7450 4350
+Wire Wire Line
+	4850 4650 4550 4650
+Wire Wire Line
+	4950 4450 4550 4450
+NoConn ~ 4550 3950
+NoConn ~ 4550 3850
+NoConn ~ 4550 3750
+NoConn ~ 3550 4250
+Wire Wire Line
+	5550 4800 5700 4800
+$Comp
+L Wiring:DualHBridgeMotorDriver MD1
+U 1 1 5CE5DC34
+P 6150 4400
+F 0 "MD1" H 6125 5025 50  0000 C CNN
+F 1 "DualHBridgeMotorDriver" H 6125 4934 50  0000 C CNN
+F 2 "" H 6150 4400 50  0001 C CNN
+F 3 "" H 6150 4400 50  0001 C CNN
+	1    6150 4400
+	-1   0    0    1   
+$EndComp
+$Comp
+L Device:C_Small C1
+U 1 1 5CF04B71
+P 6950 6000
+F 0 "C1" V 6721 6000 50  0000 C CNN
+F 1 ".1uF" V 6812 6000 50  0000 C CNN
+F 2 "" H 6950 6000 50  0001 C CNN
+F 3 "~" H 6950 6000 50  0001 C CNN
+	1    6950 6000
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	7100 6000 7050 6000
+Connection ~ 7100 6000
+Wire Wire Line
+	6850 6000 6800 6000
+Wire Wire Line
+	6800 5500 7100 5500
+NoConn ~ 6650 4200
+$Comp
+L power:GND #PWR?
+U 1 1 5CF06AD8
+P 7100 6200
+F 0 "#PWR?" H 7100 5950 50  0001 C CNN
+F 1 "GND" H 7105 6027 50  0000 C CNN
+F 2 "" H 7100 6200 50  0001 C CNN
+F 3 "" H 7100 6200 50  0001 C CNN
+	1    7100 6200
+	1    0    0    -1  
+$EndComp
+$Comp
+L Driver_Motor:L298P U?
+U 1 1 5CF1D54F
+P 5800 5950
+F 0 "U?" H 5800 6828 50  0000 C CNN
+F 1 "L298P" H 5800 6737 50  0000 C CNN
+F 2 "" H 5950 6200 50  0001 C CNN
+F 3 "http://www.st.com/st-web-ui/static/active/en/resource/technical/document/datasheet/CD00000240.pdf" H 5950 6200 50  0001 C CNN
+	1    5800 5950
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5700 4400 5050 4400
+Wire Wire Line
+	4550 4750 5050 4750
+Wire Wire Line
+	4550 4550 5000 4550
+Wire Wire Line
+	5000 4550 5000 4300
+Wire Wire Line
+	5000 4300 5700 4300
+Wire Wire Line
+	5050 4400 5050 4750
+Wire Wire Line
+	5200 5450 4950 5450
+Wire Wire Line
+	4950 4450 4950 5450
+Wire Wire Line
+	5200 5650 4850 5650
+Wire Wire Line
+	4850 4650 4850 5650
+NoConn ~ 5500 6650
+NoConn ~ 5400 6650
+NoConn ~ 6400 5850
+NoConn ~ 6400 6050
+NoConn ~ 6400 6150
+NoConn ~ 5200 5550
+NoConn ~ 5200 5850
+NoConn ~ 4550 4850
+NoConn ~ 5200 5950
+NoConn ~ 5200 6050
+Connection ~ 5800 6650
+Wire Wire Line
+	5800 6650 5700 6650
+Connection ~ 5900 6650
+Wire Wire Line
+	5900 6650 5800 6650
+Connection ~ 6000 6650
+Wire Wire Line
+	6000 6650 5900 6650
+NoConn ~ 5900 5250
+Wire Wire Line
+	6850 4500 6850 5000
+Wire Wire Line
+	6850 5000 6350 5000
+Wire Wire Line
+	6350 5000 6350 5200
+Wire Wire Line
+	6350 5200 5800 5200
+Wire Wire Line
+	5800 5200 5800 5250
+Connection ~ 6850 4500
+Wire Wire Line
+	6850 4500 6950 4500
+NoConn ~ 3550 4150
+$Comp
+L Wiring:CD4066 U?
+U 1 1 5CF46A48
+P 6250 3600
+F 0 "U?" H 6250 4125 50  0000 C CNN
+F 1 "CD4066" H 6250 4034 50  0000 C CNN
+F 2 "" V 5700 3600 50  0001 C CNN
+F 3 "" V 5700 3600 50  0001 C CNN
+	1    6250 3600
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7100 6000 7100 6150
+Wire Wire Line
+	6800 5500 6800 5750
+Connection ~ 6800 5750
+Wire Wire Line
+	6800 5750 6800 6000
+Wire Wire Line
+	7100 6150 6700 6150
+Wire Wire Line
+	6700 6150 6700 6650
+Connection ~ 7100 6150
+Wire Wire Line
+	7100 6150 7100 6200
+Wire Wire Line
+	6000 6650 6700 6650
+Wire Wire Line
+	6400 5750 6800 5750
+Wire Wire Line
+	6950 4150 6950 4500
+$Comp
+L power:GND #PWR?
+U 1 1 5CF4CC54
+P 5500 3950
+F 0 "#PWR?" H 5500 3700 50  0001 C CNN
+F 1 "GND" H 5505 3777 50  0000 C CNN
+F 2 "" H 5500 3950 50  0001 C CNN
+F 3 "" H 5500 3950 50  0001 C CNN
+	1    5500 3950
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5800 3900 5750 3900
+Wire Wire Line
+	5750 3900 5750 3850
+Wire Wire Line
+	5750 3850 5500 3850
+Wire Wire Line
+	5500 3850 5500 3950
+Wire Wire Line
+	6700 3400 7000 3400
+Wire Wire Line
+	7000 3400 7000 3300
+Wire Wire Line
+	7100 3300 7000 3300
+Wire Wire Line
+	7550 2950 6850 2950
+Wire Wire Line
+	6850 2950 6850 3300
+Wire Wire Line
+	6850 3300 6700 3300
+Connection ~ 7550 2950
+Wire Wire Line
+	7550 2950 7550 2900
+Wire Wire Line
+	5800 3300 5800 3100
+Wire Wire Line
+	5800 3100 6100 3100
+Wire Wire Line
+	6100 3100 6100 2950
+Wire Wire Line
+	6100 2950 6850 2950
+Connection ~ 6850 2950
+Wire Wire Line
+	5800 3500 5700 3500
+Wire Wire Line
+	5700 3500 5700 3300
+Wire Wire Line
+	5700 3300 5800 3300
+Connection ~ 5800 3300
+Wire Wire Line
+	5800 3400 5650 3400
+Wire Wire Line
+	5650 3400 5650 3500
+Wire Wire Line
+	5650 3600 5800 3600
+Wire Wire Line
+	5700 4200 5300 4200
+Wire Wire Line
+	5300 4200 5300 3500
+Wire Wire Line
+	5300 3500 5650 3500
+Connection ~ 5650 3500
+Wire Wire Line
+	5650 3500 5650 3600
+Wire Wire Line
+	5800 3700 4900 3700
+Wire Wire Line
+	4900 3700 4900 4350
+Wire Wire Line
+	4900 4350 4550 4350
+NoConn ~ 6700 3500
+NoConn ~ 6700 3600
+NoConn ~ 6700 3700
+NoConn ~ 6700 3800
+NoConn ~ 6700 3900
+NoConn ~ 5800 3800
+$EndSCHEMATC

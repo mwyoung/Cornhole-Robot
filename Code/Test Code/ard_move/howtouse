@@ -1,0 +1,5 @@
+install arduino code:
+    make upload
+    **python can not be running**
+
+python: use python3 <program.py>

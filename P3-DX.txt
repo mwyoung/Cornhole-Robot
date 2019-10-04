@@ -1,0 +1,13 @@
+Notes:
+
+rosrun rosaria RosAria _port:=/dev/ttyUSB0
+
+commands:
+rostopic list
+rostopic pub -1 /RosAria/cmd_vel geometry_msgs/Twist '[0.5, 0.0, 0.0]' '[0.0, 0.0, 0.0]'
+rostopic echo -n1 /RosAria/sonor
+
+Ros commands:
+roscore 									starts ros server
+rosrun turtlesim turtlesim_node		starts turtlesim
+rosrun turtlesim_cleaner <file.py>		runs file

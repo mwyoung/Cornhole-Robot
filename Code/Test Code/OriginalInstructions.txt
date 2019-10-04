@@ -1,0 +1,155 @@
+Downloads:
+http://downloads.raspberrypi.org/raspbian_lite/images/raspbian_lite-2018-04-19/
+https://ubuntu-mate.org/raspberry-pi/ubuntu-mate-16.04.2-desktop-armhf-raspberry-pi.img.xz
+
+---------------
+Only for 3B+
+Information from: 
+https://www.raspberrypi.org/forums/viewtopic.php?p=1301685#p1301685
+
+They are all in this thread, scattered around on 5 pages. So here's a nice summary :) 
+(Let us know in case I forgot something.)
+
+Copy the following files from Raspbian to Ubuntu Mate:
+ - For Booting: copy bootcode.bin, fixup.dat, start.elf, bcm2710-rpi-3-b-plus.dtb and kernel7.img
+	- also start_cd.elf, fixup_x.dat, and start_x.dat
+ - For keyboard/mouse: copy /lib/modules/4.9.80-v7+ (root partition)
+ - For network: copy the contents of /lib/firmware/brcm/ (root partition)
+
+If you want to boot from USB:
+ - edit cmdline.txt, change root=/dev/mmcblk0p2 to root=/dev/sda2 (boot partition)
+ - edit etc/fstab, change/dev/mmcblk0p2 to sda2 and /dev/mmcblk0p1 to sda1 (root partition)
+ 
+-----------------------------------------
+Extract xz file:
+unxz --keep <file>
+
+To copy
+
+fdisk -l <file.img>
+ - get boot sector size (512 bytes, etc)
+ - get value of offset (size * start, ex 512 * 2048)
+
+mount:
+sudo mkdir /media/path/img
+sudo mount -o loop,offset=<offset> <file.img> /media/path/img
+
+2048*512 = 1048576
+131072*512 = 67108864
+
+copy files:
+In directory, use sudo cp <files...> /media/path/img/path...
+	cp -r may be needed if copying the entire folder
+
+unmount:
+sudo umount /media/path/img/
+
+-----------------------------------
+Copy to sd card
+
+fdisk -l 
+	print all disks, find /dev/mmcblk*** number (could  be /dev/sd** if USB)
+dd bs=4M if=<file.img> of=/dev/*** status=progress
+	!! warning, using the wrong /dev/*** could destroy your computer/OS (dd is sometimes called disk destroyer) !!
+	This could also take a bit of time as it copies over to the sd card
+
+---------------------------
+robot13, password
+
+-----------------------
+Turn off auto updates
+System -> administration -> software & updates -> updates tab -> automatically check for updates: never
+
+Uninstall software: 
+ctrl + alt + t 			Opens terminal
+apt list --installed 	List all packages
+sudo apt autoremove	remove all old packages
+sudo apt install debian-goodies 		use dpigs to show space
+
+remove: sudo apt purge youtube-dl youtube-dlg thunderbird libreoffice-core libreoffice-common minecraft-pi brasero transmission-common deja-dup atril hexchat account-plugin-* galculator gnome-orca shotwell-common plymouth snapd squeak-*
+
+sudo apt update		updates software lists
+sudo apt upgrade	uses software lists to download new software, if run for first time can take a while (10+ minutes)
+
+sudo apt install lxde lxde-common lxsession-logout lxdm			windows manager - lighter than mate
+sudo apt purge mate-optimus
+update-alternatives --config x-session-manager					changes default WM
+
+-------------------------------
+sudo nano /boot/cmdline.txt			remove "quiet splash" and "plymouth.ignore-serial-consoles" to show things loading unstead of an animation
+sudo raspi-config						configure raspberry pi, tab to use options below
+	interfacing options  -> turn on camera and ssh
+
+sudo nano /boot/config.txt
+	set arm_freq=1200 				reduces CPU power
+https://www.raspberrypi.org/documentation/configuration/config-txt/overclocking.md
+
+long shutdown (due to cups-browsed):
+sudo systemctl stop cups-browsed.service
+sudo systemctl disable cups-browsed.service
+
+/etc/systemd/system.conf -> DefaultTimeout{Start/Stop}Sec=10s (default 90s)		speeds up shutdown
+
+------------------------
+ROS
+Use http://wiki.ros.org/kinetic/Installation/Ubuntu to install
+=========
+Setup your sources.list
+Setup your computer to accept software from packages.ros.org.
+sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
+
+Mirrors
+
+Source Debs are also available
+
+Set up your keys
+sudo apt-key adv --keyserver hkp://ha.pool.sks-keyservers.net:80 --recv-key 421C365BD9FF1F717815A3895523BAEEB01FA116
+If you experience issues connecting to the keyserver, you can try substituting hkp://pgp.mit.edu:80 or hkp://keyserver.ubuntu.com:80 in the previous command.
+
+Installation
+First, make sure your Debian package index is up-to-date:
+
+sudo apt-get update
+There are many different libraries and tools in ROS. We provided four default configurations to get you started. You can also install ROS packages individually.
+
+In case of problems with the next step, you can use following repositories instead of the ones mentioned above ros-shadow-fixed
+
+Desktop-Full Install: (Recommended) : ROS, rqt, rviz, robot-generic libraries, 2D/3D simulators, navigation and 2D/3D perception
+
+sudo apt-get install ros-kinetic-desktop-full
+==============
+Then using http://wiki.ros.org/ROSARIA, and https://github.com/reedhedges/AriaCoda, install using make install
+
+if using catkin_make, use catkin_make -j 1 to limit the number of threads or else the system becomes very slow
+
+------------------
+Setup
+
+Can not use SSH to go through networks that block device to device communication
+hostname -I 		shows the IP address
+
+ssh ros-p3@10.42.0.1				connect from other machine to the pi, also connect to the wifi rpi-13 with password
+
+raspi-config -> boot options -> cli boot
+	after logging in, startx starts a GUI
+
+sudo nano /etc/rc.local			boot time operation
+	 bash /home/ros-pi/setup.sh & 			tells to run file and fork so it can run in background
+
+create file: /home/ros-pi/setup.sh
+!#/bin/bash
+nmcli dev wifi hotspot ifname wlan0 ssid rpi-13 password "rpi-team13"
+
+readlink -f <file> 			reads the location of the file
+chmod 755 <file> 			adds write permissions for user, read/exec for everyone
+
+----------------------------------------
+ROS
+setup
+sudo usermod -a -G dialout $USER
+https://askubuntu.com/questions/112568/how-do-i-allow-a-non-default-user-to-use-serial-device-ttyusb0/680328#680328
+sudo nano /etc/udev/rules.d/50-myusb.rules
+	KERNEL=="ttyUSB[0-9]*",MODE="0666"
+	KERNEL=="ttyACM[0-9]*",MODE="0666"
+
+roscore & 

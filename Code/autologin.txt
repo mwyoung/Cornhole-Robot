@@ -1,0 +1,24 @@
+This file is to allow for ssh login without a password on a server
+Sources:
+http://www.linuxproblem.org/art_9.html
+https://www.debian.org/devel/passwordlessssh
+
+This is for Host A / user a to Host B / user b
+example: flip to os1
+Steps:
+On Host A, type in the following commands
+ssh-keygen -t rsa -b 4096
+	- press enter to save in the default directory (~/.ssh)
+	- press enter to have no passphrase (twice)
+ssh b@B mkdir -p .ssh
+	- use username@os1.engr.oregonstate.edu
+cat .ssh/id_rsa.pub | ssh b@B 'cat >> .ssh/authorized_keys'
+ssh b@B
+	- going over to Host B
+chmod 600 .ssh/authorized_keys
+	- Will not work if this is not changed
+
+Now exiting and sshing back will not prompt you for a password!
+
+Protip: add a shortcut in .bashrc
+alias os1="ssh username@os1.engr.oregonstate.edu"

@@ -1,0 +1,11 @@
+    1. Turn on the Raspberry Pi, and wait for the wifi to turn on (can take 30 seconds)
+    2. Connect to rpi-13 wifi network with the password rpi-team13
+    3. SSH into the Raspberry Pi with ssh -X robot13@10.42.0.1 and the password password
+        a. Start ROS with the bash script ./startROS.sh
+    4. SSH into the Raspberry Pi with ssh -X robot13@10.42.0.1 and the password password
+        a. Start the teleop program with ./move.py
+    5. Keep focus on the GUI for keyboard inputs
+        a. Move using WASD, IJKL, or arrow keys. Stop with the space bar
+        b. Use the buttons for the camera and other arduino functions
+            i. On your local machine, the command nc 10.42.0.1 5000 | mplayer -fps 40 -cache 512 - can be used to view the video stream
+    6. To turn off, use sudo poweroff (or reboot)
