@@ -1,10 +1,4 @@
-MiscSettings.h
-data/
-weather-icons/
-weatherPCB/OldSchematics
-weatherPCB/Schematics
-weatherPCB/WeatherPCBGerber
-weatherPCB/Libraries/Modules2.pretty
+Images/
 *.der
 *.swp
 *.zip
@@ -14,6 +8,8 @@ tags
 *.000
 *.pdf
 *.png
+*.jpg
+*.gif
 *rescue*
 *.raw
 *.net
